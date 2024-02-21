@@ -18,8 +18,8 @@ It contain a lot of elements:
 +MenuTempalte.h - class used as a base for other menus
 +OptionTemplate.h - class used as a base for other option, options are base for menus
 
-TODO:
-to finish it, there is a lot of small things to do
+TODO(main things):
++split h int h+cpp
 +clean  app.h
 +add test.h - and google mock framework to test
 +move that test namespace from main into test.h
