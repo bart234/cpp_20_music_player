@@ -53,7 +53,7 @@ class Opt_create_playlist:public Option_MainMenu_Template
     public:
         virtual void doMyAction(std::stack<std::shared_ptr<MenuTemplate>> &i_stack_of_menus)override
                 {
-                    std::cout<<"Opt_5_edit_playlist"<<std::endl;
+                    std::cout<<"Opt_create_playlist"<<std::endl;
                     std::pair<int,std::string> result_of_creation {user_b->CreateNewPlaylist()};
                     
                     if(result_of_creation.first)

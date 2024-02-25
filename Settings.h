@@ -58,7 +58,9 @@ namespace Setting
         char delimiter_used_in_all_file =',';
         std::string deafult_ ="deafult";
         std::string dash_dash_ ="--";
-        
+        std::string playlist_name_chars_acceptable ="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz_0123456789";       
+        std::string playlist_name_chars_acceptable_descr =" big and small letters, spaces, numbers, and floor '_'";       
+
     }
 
 

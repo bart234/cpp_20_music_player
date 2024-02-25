@@ -17,16 +17,35 @@ namespace GeneralFuncitons
         return true;
     }
 
-    int validateInputOnlyLetterAndSpaces(std::string inputFromConsole)
+    int validateIsInputOnlyLetterAndSpaces(std::string inputFromConsole,std::string accptable_chars_in_str = "")
     {
-        //if letter or signs - break
-        //if only spaces - break
-        //if one sign is more then 40% string lenth - break 
-        std::cout<<"TODO: general funcitonsLint validateInputOnlyLetterAndSpaces(std::string inputFromConsole) - now only 'qq' == false"<<std::endl;
-        if(inputFromConsole=="qq")
-            return false;
+        if (accptable_chars_in_str =="")
+        {
+            std::cout<<"Setting:SettingPlaylistFile:accptable_chars_in_str required"<<std::endl;
+            return 0;
+        }
         else
-            return true;
+        {
+            for(char &a: inputFromConsole)
+            {
+                int temp_check=0;
+                for(char &b: accptable_chars_in_str)
+                {
+                    if(a ==b)
+                    {
+                    temp_check++;
+                    break;
+                    }    
+                }
+                if (temp_check==0)
+                {
+                    return 0;
+                }
+
+            }
+
+            return 1;
+        }
     }
 
     int rawInputHandler(std::string inputFromConsole)

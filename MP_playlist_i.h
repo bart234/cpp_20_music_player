@@ -7,10 +7,13 @@ class Playlist_I
     Playlist *pls_local{new Playlist};
     Playlist *pls_local_tracks_to_pick{nullptr};
 
-    bool IsPlaylistNameAlreadyExist(std::string path_to_pls_list_file,std::string new_playlist_name);
+    private:
+    //in-in 
+    bool IsPlaylistNameAlreadyExist(std::string path_to_pls_list_file,std::string new_playlist_name); 
     Playlist* LoadDataFromFileIntoPlaylistObject(std::vector<std::string*>* ptr_to_raw_data,
                                                 size_t num_or_values_at_row,
                                                 char default_delimiter_at_track_lib_file);
+    
         
     public:
     Playlist_I(){};
@@ -19,8 +22,10 @@ class Playlist_I
     std::map<std::string,int> GetUserPlaylistsNameList(std::string file_path,bool map_return);
     std::pair<int,std::string> CreateNewPlaylist(std::string path_to_pls_list_file);
     
-    
+    //out-out
     void PrintPlaylistContent(Playlist *pls); 
+    
+    //out-in
     void Load_pls_with_track_to_pick_for_everyone();
     void Load_pls_by_user_by_name(std::string pls_name, std::string user_name);
     
@@ -41,30 +46,50 @@ std::pair<int,std::string> Playlist_I::CreateNewPlaylist(std::string path_to_pls
         std::string pls_name;
         std::cout<<"Please tape new playlist name:";
         std::cin>>pls_name;
+        std::cout<<"New playlist name will be check if contain only"<<Setting::SettingPlaylistFile::playlist_name_chars_acceptable_descr<<std::endl;
 
+        //----------------------------input checks----------------
         //trimming only letter and spaces
-        while(GeneralFuncitons::validateInputOnlyLetterAndSpaces(pls_name))
+        while(GeneralFuncitons::validateIsInputOnlyLetterAndSpaces(pls_name,Setting::SettingPlaylistFile::playlist_name_chars_acceptable)!=1)
         {
+            std::cout<<"Name checked: rejected"<<std::endl;
+            std::cout<<"Try again.Only"<<Setting::SettingPlaylistFile::playlist_name_chars_acceptable_descr<<std::endl;
+            std::cout<<"To cancel it type: cancel"<<std::endl;
             std::cin>>pls_name;
         }
 
+        std::cout<<"Name checked: accepted"<<std::endl;
         //check at start if that already exist
         if(this->IsPlaylistNameAlreadyExist(path_to_pls_list_file,pls_name))
         {
             //nothing to clean
-            std::cout<<"Test:- that pls already exist"<<std::endl;
+            std::cout<<"Is name exist: yes - name rejected "<<std::endl;
             return {0,"Error: this->IsPlaylistNameAlreadyExist"};
         }
-
-        //
-
+        std::cout<<"Is name exist: no - name accepted "<<std::endl;
 
 
+        //-------------------------load tracks to pick ------------------------
+        std::cout<<"test: MP_playlist_i.h -> CreateNewPlaylist - in progress"<<std::endl;
+        this->Load_pls_with_track_to_pick_for_everyone();
+        if(pls_local_tracks_to_pick != nullptr)
+        {
 
+            std::cout<<"Load playlist with track to pick: failed"<<std::endl;
+            return {0,"Error: this->Load_pls_with_track_to_pick_for_everyone() - didnt load"};
+        }
+        std::cout<<"Load playlist with track to pick: successed"<<std::endl;
+
+
+
+
+        return {1,"Success"};
         //new_pl.CreatePlaylist(pls_name);              -done
         //set pls name                                  -done
         //check if pls exist - return up if it is       -done
-        //load file with track, to playlist, and print it nice form for user - done
+
+
+        //load file with track, to playlist, and print it nice form for user - done (functions looks like are prepared)
         //ask user to  write id of songs which should be added, by ","
         //manage user input, split id-s, check if all are valid
         //return up if not, print , which one are not valid, which are valid

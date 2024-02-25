@@ -134,7 +134,7 @@ namespace tests
     {
         std::string pls_name{};
         
-         while(GeneralFuncitons::validateInputOnlyLetterAndSpaces(pls_name))
+         while(GeneralFuncitons::validateIsInputOnlyLetterAndSpaces(pls_name))
         {
             std::cin>>pls_name;
             std::cout<<"loop in"<<std::endl;
@@ -171,6 +171,17 @@ namespace tests
         //User u;
         //std::cout<<u.LogIn("Bob")<<std::endl;
     }
+
+    void test_a9_check_alidateInputOnlyLetterAndSpaces()
+    {
+        //TODO if one letter - break
+        //TODO: if only spaces - break
+        //if one sign is more then 40% string lenth - break 
+        std::cout<<"all good: return 1: "<<GeneralFuncitons::validateIsInputOnlyLetterAndSpaces("Bartek",Setting::SettingPlaylistFile::playlist_name_chars_acceptable)<<std::endl;
+        std::cout<<"all good space included: return 1: "<<GeneralFuncitons::validateIsInputOnlyLetterAndSpaces("Bar tek",Setting::SettingPlaylistFile::playlist_name_chars_acceptable)<<std::endl;
+        std::cout<<"one fail return 0: "<<GeneralFuncitons::validateIsInputOnlyLetterAndSpaces("Bart3ek",Setting::SettingPlaylistFile::playlist_name_chars_acceptable)<<std::endl;
+        std::cout<<"one fail return 0: "<<GeneralFuncitons::validateIsInputOnlyLetterAndSpaces("Ba$rtek",Setting::SettingPlaylistFile::playlist_name_chars_acceptable)<<std::endl;
+    }
 }
 
 int main()
@@ -183,8 +194,12 @@ int main()
     //tests::test_7_input_validation();
     //tests::test_8_test_find_map();
     //tests::test_9_test_user_instance();
+    //tests::test_a9_check_alidateInputOnlyLetterAndSpaces();
     //return 0;
-
+    //TODO:
+    //std::pair<int,std::string> Playlist_I::CreateNewPlaylist(std::string path_to_pls_list_file) add --> std::cout<<"To cancel it type: cancel"<<std::endl;
+    //test: MP_playlist_i.h -> CreateNewPlaylist (this->Load_pls_with_track_to_pick_for_everyone();)  -> excavate kind of error from deeper funcion
+    
     App my_app{};
     my_app.app_run();      
 
