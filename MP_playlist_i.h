@@ -70,6 +70,7 @@ std::pair<int,std::string> Playlist_I::CreateNewPlaylist(std::string path_to_pls
         //return up if not, print , which one are not valid, which are valid
         //create pls_ obj, save it with details,
         //save track id in pls obj and in file - in progress
+        return result;
 }
 
 
@@ -120,9 +121,12 @@ Playlist* Playlist_I::LoadDataFromFileIntoPlaylistObject(
         //can we clean ptr_to_raw_data and its content ?
         //yep- it is  copy into track 
 
+        
         FileManager::clean(ptr_to_raw_data);
         delete ptr_to_raw_data;
-        ptr_to_raw_data=nullptr;      
+        ptr_to_raw_data=nullptr;
+            
+        return pls_result;
     }
 
 

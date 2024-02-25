@@ -14,7 +14,7 @@ class User_base
     public:
     
     User_base()
-    {
+    {        
         user_last_played_objects.insert({"played_song","None"});
         user_last_played_objects.insert({"played_playlist","None"});
     };    

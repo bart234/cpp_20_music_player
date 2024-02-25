@@ -63,9 +63,7 @@ class Option_2_LogIn:public Option_MainMenu_Template
                     else
                     {
                         std::cout<<"Login or password are incorret"<<std::endl;
-                    };
-
-                    
+                    };                    
                 }
                 else
                 {

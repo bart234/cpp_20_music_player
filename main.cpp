@@ -23,7 +23,7 @@ using namespace std;
 namespace tests
 {
     void test_1_split_by_delimiter()
-    {
+        {
         /*FileManager fm;
         std::string dataFromTextFile = fm.LoadFileContentLoadOnlyOneNrow("test1.txt",3);
         std::vector<std::string>* result =fm.SplitFirstRowByDelimiter(dataFromTextFile,',');
@@ -39,7 +39,6 @@ namespace tests
                                                 Setting::DefaultFilesNames::user_setting_file,
                                             3);*/
     }
-
     void test_2_create_playlist_from_string()
     {
         /*
@@ -75,10 +74,10 @@ namespace tests
     {
         
 
-        int column_num{4};
+        //int column_num{4};
         char d{','};
         std::string s1{"abba, beta ,1,2,3,orzeszek"};
-        std::cout<<GeneralFuncitons::FindNElementFromSeparatedByDelimString(s1,',',8)<<std::endl;
+        std::cout<<GeneralFuncitons::FindNElementFromSeparatedByDelimString(s1,d,8)<<std::endl;
         /*
         std::string s2{"save at end of file,4,3,1,1,2,"};
         std::string s3{"1abba,2aaa, 3ss"};//,,5ffgfhgf"};
@@ -164,7 +163,14 @@ namespace tests
         //so if we looking for element which is last on list 
         //we will fund that, but it is not .end()
     }
-
+    
+    void test_9_test_user_instance()
+    {
+        //todo: remake whole user class because it generate error  somewhere as a class itself
+        // clas wasnt compile because lack of "{}" in constructor and destructor ...
+        //User u;
+        //std::cout<<u.LogIn("Bob")<<std::endl;
+    }
 }
 
 int main()
@@ -176,7 +182,9 @@ int main()
     //tests::test_6_fm_GetVectorWithWholeColumnFromFile();
     //tests::test_7_input_validation();
     //tests::test_8_test_find_map();
+    //tests::test_9_test_user_instance();
     //return 0;
+
     App my_app{};
     my_app.app_run();      
 

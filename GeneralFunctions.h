@@ -97,6 +97,8 @@ namespace GeneralFuncitons
                         <<"column_num: "<<column_num_to_return<<",\n"
                         << e.what() << '\n';
         }
+
+        return "FindNElementFromSeparatedByDelimString::error";
     }
 
     std::vector<std::string>* SplitStringByDelimiter(std::string string_to_split, char delmiter)

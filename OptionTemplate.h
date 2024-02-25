@@ -2,7 +2,7 @@
 #define OPTIONTEMPLATE_H
 #include "GeneralFunctions.h"
 #include "MP_playlist_i.h"
-#include "MP_user.h"
+#include "MP_user_main.h"
 
 
     //pre-declaration
